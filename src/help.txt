@@ -45,6 +45,10 @@ Categories -RDMA
         quit
         rds_bw
         rds_lat
+        rtcp_bw
+        rtcp_lat
+        rudp_bw
+        rudp_lat
         sctp_bw
         sctp_lat
         sdp_bw
@@ -77,6 +81,10 @@ Categories +RDMA
         rc_rdma_write_poll_lat
         rds_bw
         rds_lat
+        rtcp_bw
+        rtcp_lat
+        rudp_bw
+        rudp_lat
         sctp_bw
         sctp_lat
         sdp_bw
@@ -376,6 +384,10 @@ Tests +RDMA
     Socket Based
         rds_bw                  RDS streaming one way bandwidth
         rds_lat                 RDS one way latency
+        rtcp_bw                 RSockets TCP streaming one way bandwidth
+        rtcp_lat                RSockets TCP one way latency
+        rudp_bw                 RSockets UDP streaming one way bandwidth
+        rudp_lat                RSockets UDP one way latency
         sctp_bw                 SCTP streaming one way bandwidth
         sctp_lat                SCTP one way latency
         sdp_bw                  SDP streaming one way bandwidth
@@ -574,6 +586,70 @@ udp_bw
 udp_lat
     Purpose
         UDP one way latency
+    Common Options
+        --cpu_affinity PN (-ca)     Set processor affinity
+        --msg_size Size (-m)        Set message size
+        --sock_buf_size Size (-sb)  Set socket buffer size
+        --time (-t)                 Set test duration
+    Other Options
+        --listen_port, --ip_port, --timeout
+    Display Options
+        --precision, --unify_nodes, --unify_units, --verbose
+    Description
+        A ping pong latency test where the server and client exchange messages
+        repeatedly using UDP sockets.
+rtcp_bw
+    Purpose
+        RSockets TCP streaming one way bandwidth
+    Common Options
+        --access_recv OnOff (-ar)   Access received data
+        --cpu_affinity PN (-ca)     Set processor affinity
+        --msg_size Size (-m)        Set message size
+        --sock_buf_size Size (-sb)  Set socket buffer size
+        --time (-t)                 Set test duration
+    Other Options
+        --listen_port, --ip_port, --timeout
+    Display Options
+        --precision, --unify_nodes, --unify_units, --use_bits_per_sec,
+        --verbose
+    Description
+        The client repeatedly sends messages to the server while the server
+        notes how many were received.
+rtcp_lat
+    Purpose
+        RSockets TCP one way latency
+    Common Options
+        --cpu_affinity PN (-ca)     Set processor affinity
+        --msg_size Size (-m)        Set message size
+        --sock_buf_size Size (-sb)  Set socket buffer size
+        --time (-t)                 Set test duration
+    Other Options
+        --listen_port, --ip_port, --timeout
+    Display Options
+        --precision, --unify_nodes, --unify_units, --verbose
+    Description
+        A ping pong latency test where the server and client exchange messages
+        repeatedly using TCP sockets.
+rudp_bw
+    Purpose
+        RSockets UDP streaming one way bandwidth
+    Common Options
+        --access_recv OnOff (-ar)   Access received data
+        --cpu_affinity PN (-ca)     Set processor affinity
+        --msg_size Size (-m)        Set message size
+        --sock_buf_size Size (-sb)  Set socket buffer size
+        --time (-t)                 Set test duration
+    Other Options
+        --listen_port, --ip_port, --timeout
+    Display Options
+        --precision, --unify_nodes, --unify_units, --use_bits_per_sec,
+        --verbose
+    Description
+        The client repeatedly sends messages to the server while the server
+        notes how many were received.
+rudp_lat
+    Purpose
+        RSockets UDP one way latency
     Common Options
         --cpu_affinity PN (-ca)     Set processor affinity
         --msg_size Size (-m)        Set message size

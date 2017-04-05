@@ -231,6 +231,29 @@ typedef struct RES {
     double      latency;                /* Latency */
 } RES;
 
+/*
+ * Socket API
+ */
+typedef struct SOCKAPI
+{
+    int (*socket)(int, int, int);
+    int (*setsockopt)(int, int, int, __const void *, socklen_t);
+    int (*bind)(int, __CONST_SOCKADDR_ARG, socklen_t);
+    int (*listen)(int, int);
+    int (*accept)(int, __SOCKADDR_ARG, socklen_t *);
+    int (*getsockname)(int, __SOCKADDR_ARG, socklen_t *);
+    int (*connect)(int, __CONST_SOCKADDR_ARG, socklen_t);
+    ssize_t (*read)(int, void *, size_t);
+    ssize_t (*write)(int, __const void *, size_t);
+    ssize_t (*send)(int, __const void *, size_t, int);
+    ssize_t (*recv)(int, void *, size_t, int);
+    ssize_t (*sendto)(int, __const void *, size_t,
+            int, __CONST_SOCKADDR_ARG, socklen_t);
+    ssize_t (*recvfrom)(int, void *, size_t,
+            int, __SOCKADDR_ARG, socklen_t *);
+    int (*close)(int);
+} SOCKAPI;
+
 
 /*
  * Functions prototypes in qperf.c.
@@ -300,6 +323,14 @@ void    run_client_udp_bw(void);
 void    run_server_udp_bw(void);
 void    run_client_udp_lat(void);
 void    run_server_udp_lat(void);
+void    run_client_rtcp_bw(void);
+void    run_server_rtcp_bw(void);
+void    run_client_rtcp_lat(void);
+void    run_server_rtcp_lat(void);
+void    run_client_rudp_bw(void);
+void    run_server_rudp_bw(void);
+void    run_client_rudp_lat(void);
+void    run_server_rudp_lat(void);
 
 
 /*
@@ -371,3 +402,4 @@ extern int          ServerAddrLen;
 extern int          RemoteFD;
 extern int          Debug;
 extern volatile int Finished;
+extern SOCKAPI     *SockAPI;

@@ -282,6 +282,7 @@ int          ServerAddrLen;
 int          RemoteFD;
 int          Debug;
 volatile int Finished;
+SOCKAPI     *SockAPI;
 
 
 /*
@@ -566,6 +567,10 @@ TEST Tests[] ={
     test(tcp_lat),
     test(udp_bw),
     test(udp_lat),
+    test(rtcp_bw),
+    test(rtcp_lat),
+    test(rudp_bw),
+    test(rudp_lat),
 #ifdef RDMA
     test(rc_bi_bw),
     test(rc_bw),
